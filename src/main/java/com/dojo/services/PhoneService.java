@@ -1,12 +1,10 @@
 package com.dojo.services;
 
 import com.dojo.domain.Phone;
-import com.dojo.domain.PhoneBrand;
 import com.dojo.repositories.IPhoneRepository;
 
 import javax.inject.Inject;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PhoneService implements IPhoneService {
 
