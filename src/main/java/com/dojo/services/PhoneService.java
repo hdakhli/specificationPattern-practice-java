@@ -24,7 +24,7 @@ public class PhoneService implements IPhoneService {
     }
 
     /**
-     * premium phones: cost >= 400
+     * premium phones: cost >= 400 and not Basic
      */
     public List<Phone> getAllPremiumPhones() {
         return phoneRepository.findAllPhones().stream()
