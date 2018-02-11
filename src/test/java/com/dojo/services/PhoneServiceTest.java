@@ -59,7 +59,7 @@ public class PhoneServiceTest {
         // When
         List<Phone> result = phoneService.getAllPremiumPhones();
         // Then
-        assertEquals(5, result.size());
+        assertEquals(6, result.size());
     }
 
     @Test
@@ -107,6 +107,6 @@ public class PhoneServiceTest {
         // When
         List<Phone> result = phoneService.getAllPremiumExceptSamsungAndHTCPhones();
         // Then
-        assertEquals(3, result.size());
+        assertEquals(4, result.size());
     }
 }
