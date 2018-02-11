@@ -19,31 +19,31 @@ public class PhoneService implements IPhoneService {
      * premium phones: cost >= 400
      */
     public List<Phone> getAllPremiumPhones() {
-        return phoneRepository.findAllPhones();
+        return phoneRepository.findAllPhones().stream().filter(phone -> phone.getCost() >= 400).collect(Collectors.toList());
     }
 
     public List<Phone> getSamsungPhones() {
-        return phoneRepository.findAllPhones();
+        return phoneRepository.findAllPhones().stream().filter(phone -> phone.getBrand().equals(PhoneBrand.SAMSUNG)).collect(Collectors.toList());
     }
 
     public List<Phone> getPremiumSamsungPhones() {
-        return phoneRepository.findAllPhones();
+        return phoneRepository.findAllPhones().stream().filter(phone -> phone.getBrand().equals(PhoneBrand.SAMSUNG) && phone.getCost() >= 400).collect(Collectors.toList());
     }
 
     public List<Phone> getSamsungAndHTCPhones() {
-        return phoneRepository.findAllPhones();
+        return phoneRepository.findAllPhones().stream().filter(phone -> phone.getBrand().equals(PhoneBrand.SAMSUNG) || phone.getBrand().equals(PhoneBrand.HTC)).collect(Collectors.toList());
     }
 
     public List<Phone> getPremiumSamsungAndHTCPhones() {
-        return phoneRepository.findAllPhones();
+        return phoneRepository.findAllPhones().stream().filter(phone -> (phone.getBrand().equals(PhoneBrand.SAMSUNG) || phone.getBrand().equals(PhoneBrand.HTC)) && phone.getCost() >= 400).collect(Collectors.toList());
     }
 
     public List<Phone> getAllExceptSamsungPhones() {
-        return phoneRepository.findAllPhones();
+        return phoneRepository.findAllPhones().stream().filter(phone -> !phone.getBrand().equals(PhoneBrand.SAMSUNG)).collect(Collectors.toList());
     }
 
     public List<Phone> getAllPremiumExceptSamsungAndHTCPhones() {
-        return phoneRepository.findAllPhones();
+        return phoneRepository.findAllPhones().stream().filter(phone -> !phone.getBrand().equals(PhoneBrand.SAMSUNG) && !phone.getBrand().equals(PhoneBrand.HTC) && phone.getCost() >= 400).collect(Collectors.toList());
     }
 
 }
