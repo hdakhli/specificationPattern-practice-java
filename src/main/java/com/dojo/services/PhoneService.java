@@ -27,31 +27,45 @@ public class PhoneService implements IPhoneService {
      * premium phones: cost >= 400
      */
     public List<Phone> getAllPremiumPhones() {
-        return phoneRepository.findAllPhones().stream().filter(phone -> premiumPhoneSpec.isSatisfiedBy(phone)).collect(Collectors.toList());
+        return phoneRepository.findAllPhones().stream()
+                .filter(phone -> premiumPhoneSpec.isSatisfiedBy(phone))
+                .collect(Collectors.toList());
     }
 
     public List<Phone> getSamsungPhones() {
-        return phoneRepository.findAllPhones().stream().filter(phone -> samsungPhoneSpec.isSatisfiedBy(phone)).collect(Collectors.toList());
+        return phoneRepository.findAllPhones().stream()
+                .filter(phone -> samsungPhoneSpec.isSatisfiedBy(phone))
+                .collect(Collectors.toList());
     }
 
     public List<Phone> getPremiumSamsungPhones() {
-        return phoneRepository.findAllPhones().stream().filter(phone -> premiumPhoneSpec.and(samsungPhoneSpec).isSatisfiedBy(phone)).collect(Collectors.toList());
+        return phoneRepository.findAllPhones().stream()
+                .filter(phone -> premiumPhoneSpec.and(samsungPhoneSpec).isSatisfiedBy(phone))
+                .collect(Collectors.toList());
     }
 
     public List<Phone> getSamsungAndHTCPhones() {
-        return phoneRepository.findAllPhones().stream().filter(phone -> samsungPhoneSpec.or(htcPhoneSpec).isSatisfiedBy(phone)).collect(Collectors.toList());
+        return phoneRepository.findAllPhones().stream()
+                .filter(phone -> samsungPhoneSpec.or(htcPhoneSpec).isSatisfiedBy(phone))
+                .collect(Collectors.toList());
     }
 
     public List<Phone> getPremiumSamsungAndHTCPhones() {
-        return phoneRepository.findAllPhones().stream().filter(phone -> premiumPhoneSpec.and(samsungPhoneSpec.or(htcPhoneSpec)).isSatisfiedBy(phone)).collect(Collectors.toList());
+        return phoneRepository.findAllPhones().stream()
+                .filter(phone -> premiumPhoneSpec.and(samsungPhoneSpec.or(htcPhoneSpec)).isSatisfiedBy(phone))
+                .collect(Collectors.toList());
     }
 
     public List<Phone> getAllExceptSamsungPhones() {
-        return phoneRepository.findAllPhones().stream().filter(phone -> samsungPhoneSpec.not().isSatisfiedBy(phone)).collect(Collectors.toList());
+        return phoneRepository.findAllPhones().stream()
+                .filter(phone -> samsungPhoneSpec.not().isSatisfiedBy(phone))
+                .collect(Collectors.toList());
     }
 
     public List<Phone> getAllPremiumExceptSamsungAndHTCPhones() {
-        return phoneRepository.findAllPhones().stream().filter(phone -> premiumPhoneSpec.and(samsungPhoneSpec.or(htcPhoneSpec).not()).isSatisfiedBy(phone)).collect(Collectors.toList());
+        return phoneRepository.findAllPhones().stream()
+                .filter(phone -> premiumPhoneSpec.and(samsungPhoneSpec.or(htcPhoneSpec).not()).isSatisfiedBy(phone))
+                .collect(Collectors.toList());
     }
 
 }
